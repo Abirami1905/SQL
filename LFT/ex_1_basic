@@ -1,0 +1,15 @@
+create database Hotel;
+use hotel;
+create table menu(
+id int primary key,
+breafast varchar(100),
+lunch varchar(100),
+dinner varchar(100)
+);
+
+insert into menu values
+(1,"idly","meals","parotta"),
+(2,"pongal","biriyani","fried rice"),
+(3,"poori","curd rice","dosa");
+
+select * from menu;

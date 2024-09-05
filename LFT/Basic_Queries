@@ -1,0 +1,41 @@
+create database student;
+-- creating a database called student
+
+use student;
+-- using the student database
+
+create table stu_details(
+id int primary key,
+name varchar(30),
+gpa decimal(3,2)
+);
+-- creating a table in the student database
+
+describe stu_details;
+-- show/display the created table
+
+alter table stu_details add dept varchar(10);
+-- add a new column to the existing table
+
+alter table stu_details drop dept;
+-- delete dept column in the existing table
+
+insert into stu_details values(1,"Aarthi",9.2);
+-- inserting values in the stu_details table
+
+
+insert into stu_details values
+(3,"Anitha",8.2),
+(4,"Adhithi",7.2),
+(5,"Aradhana",9.1),
+(6,"Abinaya",8.9);
+
+
+
+insert into stu_details(id,name) values(7,"raj");
+-- inserting specific values for specific column
+
+select * from stu_details;
+-- show all columns in a  table 
+select id,name from stu_details;
+-- show specific columns in a  table

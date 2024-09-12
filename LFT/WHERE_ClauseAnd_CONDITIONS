@@ -1,0 +1,22 @@
+create database company;
+-- creating database named as company
+use company;
+-- using company database 
+create table employee(
+emp_id int primary key,
+ename varchar(30),
+job_desn varchar(30),
+salary int
+);
+-- creating a table called employee
+insert into employee values
+(1,"akshay","admin",20500),
+(2,"akshaya","manager",28000),
+(3,"brindha","sales",20000),
+(4,"ilakkiya","hr",40000),
+(5,"arun","manager",28000),
+(6,"chithra","admin",20500),
+(7,"aradhana","hr",40000);
+-- inserting the values in the employee table
+
+select * from employee;

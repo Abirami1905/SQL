@@ -1,0 +1,31 @@
+-- FUNCTIONS
+
+use company;
+
+select * from employee;
+
+-- AGGREGATE FUNCTIONS
+-- count , sum , avg , max , min
+
+-- COUNT
+select count(*)
+from employee;
+
+select count(*)Total_Employees
+from employee;
+
+-- SUM
+select SUM(salary)Total_salary
+from employee;
+
+-- AVG
+select AVG(salary)AVG_salary
+from employee;
+
+-- MAX
+select MAX(salary)MAX_salary
+from employee;
+
+-- MIN
+select MIN(salary)MIN_salary
+from employee;

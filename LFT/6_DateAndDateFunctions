@@ -1,0 +1,54 @@
+-- FUNCTIONS
+
+use company;
+
+select * from employee;
+
+-- DATE AND DATE FUNCTIONS
+
+-- adding date column in employee table
+ALTER table employee ADD COLUMN Hire_Date DATE;
+
+-- updating dates in the Hire_Date column in employee table
+
+UPDATE employee
+SET  Hire_Date="2024-09-13";
+
+UPDATE employee
+SET  Hire_Date="2024-09-12"
+WHERE job_desn="admin";
+
+UPDATE employee
+SET  Hire_Date="2024-09-11"
+WHERE job_desn="manager";
+
+UPDATE employee
+SET  Hire_Date="2024-09-10"
+WHERE job_desn="sales";
+
+-- NOW()
+select NOW();
+
+-- TO GET DATE ONLY
+select DATE(NOW());
+-- OR
+select CURDATE();
+
+-- DATE_FORMAT (to customize the date)
+select DATE_FORMAT( curdate(),"%d-%m-%y");
+
+-- DATEDIFF (to find the difference between 2 dates )
+select DATEDIFF( curdate(),"2024-09-01") AS Days;
+
+-- DATE_ADD
+select DATE_ADD(CURDATE(), INTERVAL 1 DAY)
+AS 'After a day';
+
+select DATE_ADD(CURDATE(), INTERVAL 1 WEEK)
+AS 'After a week';
+
+select CURDATE() AS 'start date',
+DATE_ADD(curdate() , INTERVAL 1 DAY)  AS 'After a day',
+DATE_ADD(curdate() , INTERVAL 1 WEEK)  AS'After a week',
+DATE_ADD(curdate() , INTERVAL 1 MONTH) AS 'After a month',
+DATE_ADD(curdate() , INTERVAL 1 YEAR)  AS'After a year';

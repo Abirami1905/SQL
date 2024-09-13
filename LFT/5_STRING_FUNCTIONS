@@ -1,0 +1,33 @@
+-- FUNCTIONS
+
+use company;
+
+select * from employee;
+
+-- STRING FUNCTIONS
+-- UCASE , CHAR_LENGTH , CONCAT , FORMAT , LEFT(STRING , NUMBER OF DECIMAL DIGITS)
+
+-- UCASE (change all string characters into uppercase)
+select UCASE(ename)name,salary -- alias name
+from employee;
+
+-- CHAR_LENGTH (It counts the charcter in the given string)
+select char_length(ename)char_count , ename
+from employee;
+
+-- CONCAT
+select ename,CONCAT('Rs.',salary)
+from employee;
+
+select ename,CONCAT('Rs.',salary)salary
+from employee;
+
+-- FORMAT(String , no.of decimal digits)
+select ename,CONCAT('Rs.',FORMAT(salary,2))salary
+from employee;
+
+-- LEFT(String , no.of characters)
+select ename,CONCAT('Rs.',FORMAT(salary,2))salary,LEFT(job_desn , 3)
+from employee;
+
+

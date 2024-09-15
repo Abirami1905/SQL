@@ -1,0 +1,50 @@
+-- CONSTRAINTS
+
+use company;
+create table employee(
+e_id INT PRIMARY KEY auto_increment,
+e_name VARCHAR(30) NOT NULL,
+job VARCHAR(30) DEFAULT 'Unassigned',
+salary INT,
+Pan VARCHAR(50) UNIQUE);
+
+insert into employee values(1,"ADHANYA","CEO",7000000,"Adhanya_Manikandan");
+insert into employee values(2,"SIDHARTH","CEO",7100000,"Sidharth_Manikandan");
+
+select * from employee;
+
+-- How to add constraints in the existing table
+
+drop table employee;
+
+create table employee(
+e_id INT PRIMARY KEY auto_increment,
+e_name VARCHAR(30) ,
+job VARCHAR(30) ,
+salary INT);
+
+-- add "NOT NULL" constraint
+alter table employee
+modify e_name varchar(30) NOT NULL;
+
+-- drop "NOT NULL" constraint
+alter table employee
+modify e_name varchar(30);
+
+-- add DEFAULT constraint
+alter table employee
+alter job
+set default 'Unassigned';
+
+-- drop DEFAULT constraint
+alter table employee
+alter job drop default;
+
+-- add CHECK constraint
+alter table employee
+add CHECK(salary>10000);
+
+
+
+
+

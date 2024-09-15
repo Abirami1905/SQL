@@ -1,0 +1,42 @@
+-- GROUP BY AND HAVING CLAUSE
+
+use company;
+
+select * from employee;
+
+-- GROUP BY functions have to be used with aggregate functions
+
+select ename,job_desn from employee
+order by job_desn;
+
+select job_desn,avg(salary) as average
+from employee
+group by job_desn;
+
+select job_desn,count(emp_id)
+from employee
+group by job_desn;
+
+-- HAVING CLAUSE
+-- WHERE is used to filter ROWS
+-- HAVING is used to filter GROUPS
+
+select job_desn,count(emp_id)
+from employee
+group by job_desn
+HAVING count(emp_id)>1 ;
+
+-- to get job_desn in alphabetical order
+select job_desn,count(emp_id)
+from employee
+group by job_desn
+HAVING count(emp_id)>1
+ORDER BY job_desn ; -- "order by" must be  used at the last of the query for sorting
+
+-- To change 'count(emp_id)' into 'COUNT'
+select job_desn,count(emp_id) AS COUNT
+from employee
+group by job_desn
+HAVING count(emp_id)>1
+ORDER BY job_desn ;
+

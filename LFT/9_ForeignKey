@@ -1,0 +1,47 @@
+-- FOREIGN KEY
+-- FOREIGN KEY is used to connect two different tables
+
+use company;
+
+drop table employee;
+
+create table branch(
+Branch_id int primary key auto_increment,
+Location varchar(30) not null,
+Address varchar(200));
+
+insert into branch values(1,"CHENNAI","16,ABC Road");
+insert into branch values(2,"MUMBAI","20,15th block");
+insert into branch values(3,"COIMBATORE","25,XYZ Road");
+
+
+select * from branch;
+
+create table employee(
+e_id INT PRIMARY KEY auto_increment,
+e_name VARCHAR(30) NOT NULL,
+job VARCHAR(30),
+salary int,
+Branch_id int,
+constraint FK_branchId foreign key (Branch_id) references branch(Branch_id));
+
+insert into employee values(1,"RAM","ADMIN",1000000,2);
+insert into employee values(2,"HARINI","MANAGER",2500000,2);
+insert into employee values(3,"GEORGE","MANAGER",2000000,1);
+insert into employee values(4,"RAMYA","CEO",1300000,3);
+insert into employee values(5,"MEENA","HR",2000000,3);
+insert into employee values(6,"ASHOK","MANAGER",3000000,1);
+insert into employee values(7,"ABDUL","HR",2000000,1);
+insert into employee values(8,"RAMYA","CEO",1000000,2);
+
+-- to remove foreign key constraint
+
+alter table employee
+drop foreign key FK_branchId;
+
+-- to delete branch table
+ drop table branch;
+
+
+select * from employee;
+

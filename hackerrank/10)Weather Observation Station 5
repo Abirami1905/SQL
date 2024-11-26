@@ -14,9 +14,10 @@ When ordered alphabetically, the CITY names are listed as ABC, DEF, PQRS, and WX
 The longest name is PQRS, but there are  options for shortest named city. Choose ABC, because it comes first alphabetically.
 
 Note
-You can write two separate queries to get the desired output. It need not be a single query.*/
+You can write two separate queries to get the desired output. It need not be a single query.
+*/
 
-
+-- 1 way
 select city,length(city) from station
 order by length(city),city asc 
 limit 1;
@@ -24,3 +25,15 @@ limit 1;
 select city,length(city) from station
 order by length(city) desc
 limit 1;
+
+-- other way
+(SELECT CITY, LENGTH(CITY) AS CITY_LENGTH
+ FROM STATION
+ ORDER BY LENGTH(CITY) ASC, CITY ASC
+ LIMIT 1)
+UNION
+(SELECT CITY, LENGTH(CITY) AS CITY_LENGTH
+ FROM STATION
+ ORDER BY LENGTH(CITY) DESC, CITY ASC
+ LIMIT 1);
+

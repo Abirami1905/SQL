@@ -1,0 +1,8 @@
+/*  Query the list of CITY names from STATION which have vowels (i.e., a, e, i, o, and u) as both their first and last characters.
+Your result cannot contain duplicates.*/
+
+SELECT DISTINCT CITY  -- DISTINCT is used to remove duplicates from the result
+FROM STATION
+WHERE LOWER(left(CITY, 1)) IN ('a', 'e', 'i', 'o', 'u') -- LOWER() ensures the comparison is case-insensitive.
+  AND LOWER(right(CITY, 1)) IN ('a', 'e', 'i', 'o', 'u'); -- right(CITY, 1) extracts the last character of the CITY.
+                                                          -- left(CITY, 1) extracts the last character of the CITY.

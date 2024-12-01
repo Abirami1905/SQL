@@ -13,6 +13,23 @@ Leaf Node:
 A node is a leaf node if it is not a parent of any other node in the tree (i.e., N does not appear in the P column).
 Inner Node:
 A node is an inner node if it is neither a root nor a leaf (i.e., it has a parent and is also a parent for other nodes).
+-----------------------------------------------------------------------------------------------------------------------------------
+OUTPUT:
+1 Leaf 
+2 Inner 
+3 Leaf 
+4 Inner 
+5 Leaf 
+6 Inner 
+7 Leaf 
+8 Leaf 
+9 Inner 
+10 Leaf 
+11 Inner 
+12 Leaf 
+13 Inner 
+14 Leaf 
+15 Root
 */
 
 SELECT N,

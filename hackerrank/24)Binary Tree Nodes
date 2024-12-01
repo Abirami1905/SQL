@@ -1,0 +1,30 @@
+/*
+You are given a table, BST, containing two columns: N and P, where N represents the value of a node in Binary Tree,
+and P is the parent of N.
+Write a query to find the node type of Binary Tree ordered by the value of the node. Output one of the following for each node:
+Root: If node is root node.
+Leaf: If node is leaf node.
+Inner: If node is neither root nor leaf node.
+-----------------------------------------------------------------------------------------------------------------------------------
+Logic:
+Root Node:
+A node is a root node if it has no parent (i.e., P IS NULL).
+Leaf Node:
+A node is a leaf node if it is not a parent of any other node in the tree (i.e., N does not appear in the P column).
+Inner Node:
+A node is an inner node if it is neither a root nor a leaf (i.e., it has a parent and is also a parent for other nodes).
+*/
+
+SELECT N,
+  CASE
+   WHEN P is null THEN 'Root'  
+   WHEN N not in (SELECT P FROM BST WHERE P IS NOT NULL) THEN 'Leaf' 
+   ELSE 'Inner'
+  END
+FROM BST
+ORDER BY N;
+
+/*
+WHEN N NOT IN (SELECT P FROM BST WHERE P IS NOT NULL) THEN 'Leaf':
+If a node's value (N) is not present in the P column of any row, it is not a parent, and thus it is a leaf node.
+*/

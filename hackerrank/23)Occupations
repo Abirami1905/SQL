@@ -1,0 +1,48 @@
+/*
+Pivot the Occupation column in OCCUPATIONS so that each Name is sorted alphabetically and displayed underneath its corresponding Occupation. 
+The output column headers should be Doctor, Professor, Singer, and Actor, respectively.
+
+Note: Print NULL when there are no more names corresponding to an occupation.
+
+PIVOTING :
+The term pivot in this context refers to the process of transforming data from a row-oriented format to a column-oriented format.
+Specifically, it involves turning unique values from one column (in this case, the Occupation column) 
+into separate columns, with corresponding values from another column (the Name column) being aligned under those columns.
+
+OUTPUT:
+Aamina Ashley Christeen Eve 
+Julia Belvet Jane Jennifer 
+Priya Britney Jenny Ketty 
+NULL Maria Kristeen Samantha 
+NULL Meera NULL NULL 
+NULL Naomi NULL NULL 
+NULL Priyanka NULL NULL
+
+
+EXPLANATION:
+The first column is an alphabetically ordered list of Doctor names.
+The second column is an alphabetically ordered list of Professor names.
+The third column is an alphabetically ordered list of Singer names.
+The fourth column is an alphabetically ordered list of Actor names.
+The empty cell data for columns with less than the maximum number of names per occupation 
+(in this case, the Professor and Actor columns) are filled with NULL values.
+*/
+
+
+SELECT  -- Outer query
+   MAX(CASE WHEN OCCUPATION = 'Doctor' THEN NAME END) AS Doctor,
+   MAX(CASE WHEN OCCUPATION = 'Professor' THEN NAME END) AS Professor,
+   MAX(CASE WHEN OCCUPATION = 'Singer' THEN NAME END) AS Singer,
+   MAX(CASE WHEN OCCUPATION = 'Actor' THEN NAME END) AS Actor
+   
+ FROM(  -- Inner query
+     SELECT NAME,OCCUPATION,ROW_NUMBER() OVER(PARTITION BY OCCUPATION ORDER BY NAME) AS ROW_NUM FROM OCCUPATIONS) AS T
+
+GROUP BY ROW_NUM
+ORDER BY ROW_NUM;
+
+/*
+1) MAX() --> returns non null values first
+2)ROW_NUMBER() --> Give row_number for each row 
+3) PARTITION BY OCCUPATION ORDER BY NAME --> generate single column for each occupation and sort in alphabetical order
+*/

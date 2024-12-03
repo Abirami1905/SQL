@@ -1,0 +1,14 @@
+/* ORACLE
+
+A median is defined as a number separating the higher half of a data set from the lower half.
+Query the median of the Northern Latitudes (LAT_N) from STATION and round your answer to 4 decimal places.
+
+OUTPUT:
+83.8913
+*/
+-- if odd,Median=Value at position(n+1/2) 
+-- if even,Median=Value at position((n/2)+1)+(n/2) 
+
+
+SELECT ROUND(MEDIAN(LAT_N), 4) AS Median_LAT_N
+FROM STATION;

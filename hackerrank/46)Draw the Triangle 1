@@ -1,0 +1,39 @@
+/*
+QN:P(R) represents a pattern drawn by Julia in R rows. The following pattern represents P(5):
+
+* * * * * 
+* * * * 
+* * * 
+* * 
+*
+Write a query to print the pattern P(20).
+
+EXPLANATION:
+DELIMITER $$ and DELIMITER ;: Changes the statement delimiter to $$ for defining the stored procedure and resets it to ; afterward.
+CREATE PROCEDURE PrintPattern(): Defines a stored procedure named PrintPattern.
+DECLARE i INT;: Declares a variable i to track the current row.
+SET i = 20;: Initializes the variable i to 20.
+WHILE i > 0 DO: Starts a loop to generate each row of the pattern.
+SELECT REPEAT('* ', i) AS pattern_row;: Uses the REPEAT function to generate a row with 
+𝑖
+i repetitions of '* '.
+SET i = i - 1;: Decrements the counter to move to the next row.
+CALL PrintPattern();: Calls the procedure to execute it.
+*/
+
+DELIMITER $$
+
+CREATE PROCEDURE printPattern()
+
+BEGIN
+ DECLARE i INT;
+ SET i=20;
+   WHILE(i>0) do
+      SELECT REPEAT('* ',i );
+      SET i=i-1;
+   END WHILE;
+      
+END $$
+
+DELIMITER ;
+CALL printpattern();

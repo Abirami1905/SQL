@@ -1,0 +1,10 @@
+/*Basic LEFT JOIN:
+Write a query to fetch all employees and their corresponding project names, even if an employee is not assigned a project.
+Tables:
+employees(emp_id, emp_name, project_id)
+projects(project_id, project_name)
+*/
+
+select employees.emp_name , projects.project_name from employees 
+left join projects
+on employees.project_id = projects.project_id;

@@ -1,0 +1,12 @@
+/*
+Basic RIGHT JOIN:
+Write a query to fetch all courses and the students enrolled in them, even if no students are enrolled in some courses.
+
+Tables:
+courses(course_id, course_name)
+enrollments(student_id, course_id)
+*/
+
+select courses.course_name , enrollments.student_id 
+from enrollments right join courses
+on enrollments.course_id =courses .course_id;

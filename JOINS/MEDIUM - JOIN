@@ -1,0 +1,14 @@
+/* 
+Medium Level Questions
+Using ON Condition with JOIN:
+Write a query to fetch customer names and the names of the employees who handled their orders.
+
+Tables:
+customers(cust_id, cust_name)
+orders(order_id, cust_id, emp_id)
+employees(emp_id, emp_name)
+*/
+
+select c.cust_name,e.emp_name from customers c 
+join orders o on c.cust_id = o.cust_id
+join employees e on o.emp_id = e.emp_id;

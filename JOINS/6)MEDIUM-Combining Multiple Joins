@@ -1,0 +1,14 @@
+/*
+Combining Multiple Joins:
+Write a query to fetch order details along with the product name and customer name for each order.
+
+Tables:
+orders(order_id, cust_id, product_id)
+products(product_id, product_name)
+customers(cust_id, cust_name)
+*/
+
+select o.order_id, p.product_name , c.cust_name
+from orders o
+join products p on o.product_id = p.product_id
+join customers c on c.cust_id = o.cust_id;

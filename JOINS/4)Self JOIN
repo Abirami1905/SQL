@@ -1,0 +1,12 @@
+/*
+Self JOIN:
+Write a query to find pairs of employees who work in the same department.
+
+Table:
+employees(emp_id, emp_name, dept_id)
+*/
+
+select e1.emp_name AS empName1 , e2.emp_name AS empName2
+from employees e1
+join employees e2
+on e1.dept_id=e2.dept_id and e1.emp_id<>e2.emp_id;

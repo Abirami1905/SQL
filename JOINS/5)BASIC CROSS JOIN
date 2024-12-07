@@ -1,0 +1,11 @@
+/* 
+Simple CROSS JOIN:
+Write a query to fetch all combinations of employees and departments.
+
+Tables:
+employees(emp_id, emp_name)
+departments(dept_id, dept_name)
+*/
+
+select e.emp_name , d.dept_name from employees e
+cross join departments d;

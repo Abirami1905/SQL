@@ -9,4 +9,10 @@ ORDER BY SUBSTR(NAME, LENGTH(NAME) - 2, 3), ID;  -- SUBSTR(NAME, LENGTH(NAME) - 
                                                 -- it takes the first position as -2 and last pos as 3 in the string
                                                  -- substr(abirami,length(abirami) -2,3)
                                                  -- length(abirami)=7 ,-2=a ,3=next three characters from starting pos -2 (i.e), ami
+
+-- 2nd query
+
+select name from students 
+where marks > 75
+order by lower(right(name,3)) asc , id asc;
                                                 

@@ -1,0 +1,4 @@
+select  unique_id , name from EMPLOYEEUNI eu
+right JOIN 
+EMPLOYEES e
+ON eu.id = e.id ;

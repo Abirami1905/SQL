@@ -1,0 +1,34 @@
+WITH total AS (
+    SELECT COUNT(DISTINCT player_id) AS p 
+    FROM activity
+),
+f_login AS (
+    SELECT 
+        player_id, 
+        MIN(event_date) AS start
+    FROM 
+        activity
+    GROUP BY 
+        player_id
+),
+n_login AS (
+    SELECT DISTINCT
+        a.player_id
+    FROM 
+        activity a
+    JOIN 
+        f_login fn
+    ON  
+        a.player_id = fn.player_id 
+        AND a.event_date = fn.start + INTERVAL 1 DAY
+)
+
+SELECT 
+    CASE 
+        WHEN COUNT(nl.player_id) = 0 THEN 0
+        ELSE ROUND(COUNT(nl.player_id) * 1.0 / t.p, 2)
+    END AS fraction
+FROM 
+    n_login nl
+CROSS JOIN 
+    total t;

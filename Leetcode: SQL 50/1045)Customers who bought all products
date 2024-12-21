@@ -1,0 +1,10 @@
+WITH total AS (
+    SELECT COUNT(*) AS t1
+    FROM product
+)
+SELECT c.customer_id, COUNT(DISTINCT c.product_key) AS t2
+FROM customer c
+CROSS JOIN total t
+WHERE c.product_key IN (SELECT product_key FROM product)
+GROUP BY c.customer_id
+HAVING COUNT(DISTINCT c.product_key) = (SELECT t1 FROM total);

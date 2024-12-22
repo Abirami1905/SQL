@@ -1,0 +1,51 @@
+WITH total AS (
+    -- Calculate the number of poor queries (rating < 3) for each query_name
+    SELECT 
+        query_name, 
+        COUNT(*) AS poor_count
+    FROM 
+        Queries
+    WHERE 
+        rating < 3
+    GROUP BY 
+        query_name
+),
+totals AS (
+    -- Calculate the total number of queries for each query_name
+    SELECT 
+        query_name, 
+        COUNT(*) AS total_count
+    FROM 
+        Queries
+    GROUP BY 
+        query_name
+),
+poor_percentage AS (
+    -- Calculate the poor query percentage for each query_name
+    SELECT 
+        t.query_name, 
+        ROUND((COALESCE(total.poor_count, 0) * 1.0 / t.total_count) * 100, 2) AS poor_query_percentage
+    FROM 
+        totals t
+    LEFT JOIN 
+        total 
+    ON 
+        t.query_name = total.query_name
+),
+quality AS (
+    -- Calculate the quality metric for each query_name
+    SELECT 
+        query_name, 
+        ROUND(AVG(rating * 1.0 / position), 2) AS quality
+    FROM  Queries
+    GROUP BY  query_name
+)
+-- Combine the quality and poor query percentage for each query_name
+SELECT 
+    q.query_name, 
+    q.quality, 
+    p.poor_query_percentage
+FROM quality q
+JOIN poor_percentage p
+ON  q.query_name = p.query_name
+ORDER BY q.query_name;

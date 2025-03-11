@@ -1,11 +1,11 @@
--- CREATION OF DATABASE
+-- 1) CREATION OF DATABASE
 create database kab_da; -- combination of company name,team name and project name 
 show databases;
 use kab_da;
 drop database kab_da;
 show databases;
-
---  CREATION OF TABLE
+-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- 2) CREATION OF TABLE
 -- creation,inserting values,update,select,delete specific and whole table,truncate all records
 use company;
 create table test( sno int , name varchar(100) );
@@ -17,3 +17,44 @@ update test set name ='MA' ,sno=17 where sno=3;
 delete from test where sno=17;
 truncate table test;
 drop table test;
+-- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- 3) Ways of creating various types of table
+
+-- 1)normal table creation
+-- 2)CTAS (A table will be created by extracting the columns from another table which matches the condition .i.e.(salary>6000)
+create table high_paid_employee as
+select
+     employee_id,
+     first_name,
+     last_name,
+     salary
+from employees
+where salary >6000;
+
+-- 3)Temporary table (It will be disappear after the session ends .i.e.(after the shell or file runs) 
+-- This can be used in cases where reuse the outputs by storing the output temporarily to run that code
+create temporary table temp_high_paid_employees(
+employee_id int,
+salary DECIMAL(10,2)
+);
+
+insert into temp_high_paid_employees
+select 
+    employee_id,
+    salary
+from employees
+where salary>6000;
+
+-- 4) CTE using 'with' (It also acts like a temporary table)
+
+with high_salary_cte as(
+select
+     employee_id,
+     first_name,
+     last_name,
+     salary
+from employees
+where salary > 7000
+)
+CREATE table high_salary_employees_via_CTE as
+select * from high_salary_cte;

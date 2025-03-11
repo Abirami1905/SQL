@@ -1,0 +1,19 @@
+-- CREATION OF DATABASE
+create database kab_da; -- combination of company name,team name and project name 
+show databases;
+use kab_da;
+drop database kab_da;
+show databases;
+
+--  CREATION OF TABLE
+-- creation,inserting values,update,select,delete specific and whole table,truncate all records
+use company;
+create table test( sno int , name varchar(100) );
+insert into test values(1,'Sidharth'),(2,'Adhanya'),(3,'Nandhini');
+update test set name ='MLA' where name = 'Nandhini';
+select * from test;
+-- if you want to update multiple values in a single row
+update test set name ='MA' ,sno=17 where sno=3;
+delete from test where sno=17;
+truncate table test;
+drop table test;

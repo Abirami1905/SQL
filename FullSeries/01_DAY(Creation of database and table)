@@ -58,3 +58,45 @@ where salary > 7000
 )
 CREATE table high_salary_employees_via_CTE as
 select * from high_salary_cte;
+
+-- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- 4)WHERE Clause
+
+create database UBER;
+
+create table UBER.rides(
+ride_id int,
+driver_id int,
+rider_id int,
+pickup_location varchar(100),
+dropoff_location varchar(100),
+ride_date datetime,
+fare decimal(10,2)
+);
+
+select * from UBER.rides;
+
+insert into uber.rides values
+(1,101,201,'Chennai','Covai','2025-03-11 00:00:00', 500.00),
+(2,102,202,'Bangalore','Hyderabad','2025-03-11 10:00:00', 800.00),
+(3,103,203,'Chennai','Madurai','2025-03-11 12:00:00', 400.00),
+(4,104,204,'Covai','Chennai','2025-03-11 14:00:00', 600.00),
+(5,105,205,'Bangalore','Covai','2025-03-11 16:00:00', 700.00);
+
+select * from rides where fare > 500;
+
+-- to know about the structure of the table and it's columns , we use desc .i.e.(describe)
+desc UBER.rides;
+
+-- order by fare
+select * from rides where fare > 500 order by fare asc;
+
+-- using more than 1 condition
+select * from rides where fare > 500 and dropoff_location = 'chennai'
+order by fare asc;
+
+
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+

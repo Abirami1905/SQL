@@ -59,9 +59,28 @@ where salary > 7000
 CREATE table high_salary_employees_via_CTE as
 select * from high_salary_cte;
 
--- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- 4)ALTER
+-- It is used to rename,drop or add a column . It is also used for adding primary and foreign key.
+CREATE TABLE employees (
+employee_id int primary key,
+FirstName varchar(50),
+Lastname varchar(50)
+);
 
--- 4)WHERE Clause
+desc employees;
+
+ALTER TABLE employees
+add Email varchar(100);
+
+Alter table employees drop column email;
+
+ALTER TABLE employees
+rename to emp_123;
+
+desc emp_123;
+-- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- 5)WHERE Clause
 
 create database UBER;
 

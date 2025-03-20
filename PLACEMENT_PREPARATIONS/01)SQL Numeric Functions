@@ -1,0 +1,77 @@
+--                      BASIC ARITHMATIC FUNCTIONS
+-- ADD
+select 10+5 ; -- 15
+-- SUB
+select 10-5 ;  -- 5
+-- MUL
+select 10*5 ; -- 50
+-- DIV
+select 10/5 ; -- 2
+
+-- 						ROUNDING AND TRUNCATION FUNCTIONS
+
+-- ROUND() -> Rounds a number to a specified number of decimal places
+ select ROUND(123.456,2); -- 123.46
+ 
+ -- CEILING() -> Rounds up to the nearest integer
+ select CEILING(123.456); -- 124
+ 
+ -- FLOOR() -> Rounds down to the nearest integer
+ select FLOOR(123.456); -- 123
+ 
+ -- TRUNCATE() -> Truncates a number to a specified number of decimal places
+ select TRUNCATE(123.456,2); -- 123.45
+   
+   
+   --                                     ABSOLUTE VALUE FUNCTIONS
+   
+   -- ABS()
+   SELECT ABS(-13); -- 13
+   
+   --                                      POWER AND ROOT FUNCTIONS
+   
+   -- POWER()  -- Raises a number to a power
+   SELECT POWER(2,3)  -- 2*2*2 -> 8 
+   
+   -- SQRT()  -- Raises a number to a power
+    select  SQRT(16);  -- 4 
+    
+-- 										     MODULO FUNCTIONS(Returns the remainder of a division)
+
+-- MOD()
+SELECT MOD(10,3);  -- 1
+
+
+--                                            LOGARITHMIC FUNCTIONS
+
+
+-- LOG() --> Returns the natural logarithm
+SELECT LOG(10);  -- 2.302585092994046
+
+-- LOG10() --> Returns the base-10 logarithm
+SELECT LOG10(100);  -- 2
+
+--                                            TRIGONOMETRIC FUNCTIONS
+
+
+-- SIN() --> Sine of a value (in radians)
+SELECT SIN(PI()/2);  -- 1
+
+-- COS() --> Cosine of a value 
+SELECT COS(0);  -- 1
+
+-- TAN() --> Tangent of a value 
+SELECT TAN(PI() / 4);  -- 0.99999999999999999999
+
+
+--                                            RANDOM NUMBER FUNCTIONS (Generates random numbers for testing or simulation)
+
+
+-- RAND() --> Generates a random number between 0 and 1
+SELECT RAND();  -- 0.5255888435296611
+
+-- RAND(seed) --> Generates a reproducible random number based on a seed value
+SELECT RAND(34);  -- 0.6614461407637653
+
+
+
